@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 #[derive(Debug, StructOpt)]
 pub struct Opt {
-    /// ID of the spreadsheet
+    /// Specify the ID of the spreadsheet
     #[structopt(long = "id")]
     pub spreasheet_id: String,
     /// If true, ignore csv header
@@ -11,5 +11,8 @@ pub struct Opt {
     pub ignore_header: bool,
     /// Specify the directory to output CSV files
     #[structopt(short, long, parse(from_os_str))]
-    pub out_dir: Option<PathBuf>
+    pub out_dir: Option<PathBuf>,
+    /// Specify the path to the JSON file for the service account key
+    #[structopt(short = "k", long = "key", parse(from_os_str))]
+    pub service_account_key: Option<PathBuf>
 }

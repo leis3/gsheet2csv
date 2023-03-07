@@ -12,7 +12,12 @@ async fn main() {
     let opt = opt::Opt::from_args();
 
     let hub = {
-        let secret = oauth2::read_service_account_key("service_account_key.json")
+        let path = dirs::cache_dir().unwrap().join("gsheet2csv").join("service_account_key.json");
+        std::fs::create_dir_all(path.parent().unwrap()).unwrap();
+        if let Some(key) = &opt.service_account_key {
+            std::fs::copy(&key, &path).unwrap();
+        }
+        let secret = oauth2::read_service_account_key(&path)
             .await
             .expect("failed to read service_account_key.json");
 

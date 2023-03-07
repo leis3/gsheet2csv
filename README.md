@@ -11,7 +11,7 @@ $ cargo install --git https://github.com/leis3/gsheet2csv.git
 ## Usage
 
 ```console
-$ gsheet2csv --id "spreadsheet_id" --ignore-header --out-dir "csv"
+$ gsheet2csv --id "spreadsheet_id" --ignore-header --out-dir "csv" --key
 ```
 ## Options
 
@@ -21,3 +21,5 @@ Specify the ID of the spreadsheet from which the data will be retrieved.
 If this flag is specified, the first line is ignored and the second and subsequent lines are output to the CSV file.
 - `--out-dir`
 Specify the directory to output CSV files.
+- `--key`
+Specify the path to the JSON file for the service account key. JSON files are stored under "gsheet2csv" directory in the cache directory.
