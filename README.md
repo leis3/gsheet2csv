@@ -1,3 +1,5 @@
+[![Rust](https://github.com/leis3/gsheet2csv/actions/workflows/rust.yml/badge.svg?branch=develop)](https://github.com/leis3/gsheet2csv/actions/workflows/rust.yml)
+
 # gsheet2csv
 
 `gsheet2csv` is a command-line tool that retrieves data from a Google spreadsheet and outputs it as a CSV file. The name of each CSV file is the same as the name of the corresponding sheet in the spreadsheet.
