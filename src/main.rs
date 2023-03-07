@@ -1,6 +1,7 @@
 mod opt;
 
 use std::io::Write;
+use std::path::PathBuf;
 use structopt::StructOpt;
 use google_sheets4 as sheets4;
 use sheets4::Sheets;
@@ -52,8 +53,14 @@ async fn main() {
             if opt.ignore_header { values.split_off(1) } else { values }
         };
 
-
-        let mut file = std::fs::File::create(format!("{title}.csv")).unwrap();
+        let dir = if let Some(out_dir) = &opt.out_dir {
+            std::fs::create_dir_all(out_dir).unwrap();
+            out_dir.clone()
+        } else {
+            PathBuf::new()
+        };
+        let path = dir.join(format!("{title}.csv"));
+        let mut file = std::fs::File::create(&path).unwrap();
         for e in values.into_iter().map(|v| v.join(",")) {
             writeln!(file, "{e}").unwrap();
         }
