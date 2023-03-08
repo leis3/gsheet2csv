@@ -45,7 +45,6 @@ async fn main() {
             .expect("failed to get spreadsheet");
         ss.sheets.unwrap().into_iter()
             .map(|sheet| sheet.properties.unwrap().title.unwrap())
-            .collect::<Vec<_>>()
     };
 
     for title in titles {
