@@ -54,7 +54,7 @@ async fn main() {
             .expect("failed to get values");
 
         let values = {
-            let mut values = value.values.unwrap();
+            let Some(mut values) = value.values else { continue; };
             if opt.ignore_header { values.split_off(1) } else { values }
         };
 
