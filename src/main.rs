@@ -42,7 +42,7 @@ async fn main() {
         let (_, ss) = hub.spreadsheets()
             .get(&opt.spreasheet_id)
             .doit().await
-            .expect("failed tp get spreadsheet");
+            .expect("failed to get spreadsheet");
         ss.sheets.unwrap().into_iter()
             .map(|sheet| sheet.properties.unwrap().title.unwrap())
             .collect::<Vec<_>>()
